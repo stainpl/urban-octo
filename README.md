@@ -1,6 +1,6 @@
 # My Blog — Fullstack (Next.js + Node/Express + TypeScript + MongoDB)
 
-> Production-minded blog platform starter you can sell. Auth (short-lived JWT + rotated opaque refresh tokens), invite-only admin flow, admin dashboard, post editor (upload + URL images), comments, and basic UI primitives.
+> Production-minded blog platform starter. Auth (short-lived JWT + rotated opaque refresh tokens), invite-only admin flow, admin dashboard, post editor (upload + URL images), comments, and basic UI primitives.
 
 This README is a **copy‑paste ready** developer guide to run, develop, and prepare the app for production — no fluff. It’s intended as a commercial foundation: secure secrets, transactional email, storage, and legal checks are required before you ship it to paying clients.
 
@@ -137,7 +137,6 @@ NEXT_PUBLIC_API_BASE=http://localhost:4000/api
 
 ## Project structure (brief)
 
-*Copy-paste friendly tree (trimmed):*
 
 ```
 my-blog/
@@ -317,16 +316,6 @@ Why this matters: replay protection and server-side revocation are built-in. Do 
 
 ---
 
-## Commercial notes & license suggestions
-
-* This repo is a **starter product** for building sellable blog platforms. Decide a license that matches your goals:
-
-  * **MIT** — permissive, fastest for adoption.
-  * **BUSINESS SOURCE** or **Dual license** — if you want a commercial arrangement while allowing non‑commercial usage.
-  * **Proprietary** — if you plan to sell SaaS or licensed instances, create a simple EULA and ship with clearly documented support/maintenance tiers.
-* Prepare a short onboarding doc for clients: where to set env vars, how to seed admin, and contact/support channels.
-
----
 
 ## Next recommended steps
 
@@ -338,10 +327,3 @@ Why this matters: replay protection and server-side revocation are built-in. Do 
 
 ---
 
-If you want, I can:
-
-* Export this README as a markdown file in the repo structure, or
-* Generate a short `DEPLOY.md` with step-by-step production deploy instructions (Vercel + DigitalOcean / AWS), or
-* Produce a compact `SECURITY_CHECKLIST.md` you can ship to clients.
-
-Which one shall I create next?
