@@ -13,22 +13,32 @@ const items = [
 ];
 
 export default function Sidebar() {
-  const [collapsed, setCollapsed] = useState<boolean>(() => {
-    try {
-      return localStorage.getItem('admin_sidebar_collapsed') === '1';
-    } catch {
-      return false;
-    }
-  });
+  const [collapsed, setCollapsed] = useState<boolean>(false);
+  const [isMounted, setIsMounted] = useState<boolean>(false);
 
+  // Handle hydration-safe state initialization
   useEffect(() => {
+    setIsMounted(true);
     try {
-      localStorage.setItem('admin_sidebar_collapsed', collapsed ? '1' : '0');
+      const savedState = localStorage.getItem('admin_sidebar_collapsed') === '1';
+      setCollapsed(savedState);
     } catch {}
-  }, [collapsed]);
+  }, []);
+
+  // Save state to localStorage only after mount
+  useEffect(() => {
+    if (isMounted) {
+      try {
+        localStorage.setItem('admin_sidebar_collapsed', collapsed ? '1' : '0');
+      } catch {}
+    }
+  }, [collapsed, isMounted]);
+
+  // Use consistent width during SSR and initial hydration
+  const sidebarWidth = isMounted ? (collapsed ? 'w-16' : 'w-60') : 'w-60';
 
   return (
-    <aside className={`bg-white dark:bg-gray-900 border-r h-screen transition-all ${collapsed ? 'w-16' : 'w-60'}`}>
+    <aside className={`bg-white dark:bg-gray-900 border-r h-screen transition-all ${sidebarWidth}`}>
       <div className="flex flex-col h-full">
         <div className="px-3 py-4 flex items-center gap-3">
           {!collapsed && <div className="text-lg font-semibold">Admin</div>}

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Roboto } from "next/font/google"; // 👈 add Roboto
+import { Geist, Geist_Mono, Roboto } from "next/font/google";
 import "./globals.css";
-import { AuthProvider } from "../context/AuthContext";
+import { Providers } from "@/app/Provider"; 
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 const roboto = Roboto({
   variable: "--font-roboto",
   subsets: ["latin"],
-  weight: ["400", "500", "700"], 
+  weight: ["400", "500", "700"],
 });
 
 export const metadata: Metadata = {
@@ -26,17 +26,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} antialiased`}
       >
-        <AuthProvider>
-          {children}
-        </AuthProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
